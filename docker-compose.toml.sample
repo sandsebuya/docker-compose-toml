@@ -1,12 +1,15 @@
 [services]
 
-[services.alpine]
-image = "alpine"
+[services.db]
+image = "postgres:latest"
 networks = ["test"]
-ports = ["1333:881"]
-[services.nginx]
-image = "nginx"
-networks = ["test"]
+ports = ["5433:5432"]
+environment = [
+    "POSTGRES_PASSWORD=7636feeffeef",
+    "POSTGRES_USER=admen",
+    "POSTGRES_DB=nanofh",
+    "TEST=$PATH"
+]
 
 [networks]
 [networks.test]

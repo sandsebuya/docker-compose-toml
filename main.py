@@ -2,6 +2,8 @@ import tomllib
 import yaml
 import sys
 import subprocess
+from string import Template
+import os
 
 
 def read_toml() -> dict:
@@ -12,8 +14,10 @@ def read_toml() -> dict:
 
 def generate_yaml(data: dict):
     if len(sys.argv) == 1:
-        yaml_str = yaml.dump(data, allow_unicode=True, default_flow_style=False)
-        print(yaml_str)
+        yaml_str = Template(
+            yaml.dump(data, allow_unicode=True, default_flow_style=False)
+        )
+        print(yaml_str.substitute(os.environ))
     with open("docker-compose.yaml", "w", encoding="utf-8") as f:
         yaml.dump(data, f, allow_unicode=True, default_flow_style=False)
 
