@@ -3,7 +3,7 @@
 [services.alpine]
 image = "alpine"
 networks = ["test"]
-
+ports = ["1333:881"]
 [services.nginx]
 image = "nginx"
 networks = ["test"]
