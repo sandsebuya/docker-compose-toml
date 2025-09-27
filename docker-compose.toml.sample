@@ -1,0 +1,13 @@
+[services]
+
+[services.alpine]
+image = "alpine"
+networks = ["test"]
+
+[services.nginx]
+image = "nginx"
+networks = ["test"]
+
+[networks]
+[networks.test]
+driver = "bridge"
