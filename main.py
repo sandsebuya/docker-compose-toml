@@ -4,6 +4,12 @@ import sys
 import subprocess
 
 
+def read_toml() -> dict:
+    with open("docker-compose.toml", "rb") as f:
+        data = tomllib.load(f)
+        return data
+
+
 def generate_yaml(data: dict):
     if len(sys.argv) == 1:
         yaml_str = yaml.dump(data, allow_unicode=True, default_flow_style=False)
