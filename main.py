@@ -27,7 +27,8 @@ def run_compose():
         raise SystemExit()
     try:
         sys_arg = sys.argv[1:]
-        sys_arg.insert(0, "docker-compose")
+        sys_arg.insert(0, "compose")
+        sys_arg.insert(0, "docker")
         process = subprocess.Popen(
             sys_arg, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
         )
